@@ -6,14 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | kongque develop</title>
+  <title>boost.signals2 | kongque develop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="kongque develop">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="1. 观察者模式什么是观察者模式呢？
+定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。
+2. 从零开始实现观察者模式观察者模式实现(CPP):
+1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="boost.signals2">
+<meta property="og:url" content="http://yoursite.com/2017/05/01/boost-signals2/index.html">
 <meta property="og:site_name" content="kongque develop">
+<meta property="og:description" content="1. 观察者模式什么是观察者模式呢？
+定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。
+2. 从零开始实现观察者模式观察者模式实现(CPP):
+1234567891">
+<meta property="og:updated_time" content="2017-05-01T10:41:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kongque develop">
+<meta name="twitter:title" content="boost.signals2">
+<meta name="twitter:description" content="1. 观察者模式什么是观察者模式呢？
+定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。
+2. 从零开始实现观察者模式观察者模式实现(CPP):
+1234567891">
   
     <link rel="alternative" href="/atom.xml" title="kongque develop" type="application/atom+xml">
   
@@ -159,122 +175,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-boost-signals2" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      boost.signals2
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/boost-signals2/" class="archive-article-date">
+
+        
+        <a href="/2017/05/01/boost-signals2/" class="archive-article-date">
   	<time datetime="2017-05-01T10:41:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/boost-signals2/">boost.signals2</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-观察者模式"><a href="#1-观察者模式" class="headerlink" title="1. 观察者模式"></a>1. 观察者模式</h2><p>什么是观察者模式呢？</p>
+<p>定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
+<p>特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。</p>
+<h2 id="2-从零开始实现观察者模式"><a href="#2-从零开始实现观察者模式" class="headerlink" title="2. 从零开始实现观察者模式"></a>2. 从零开始实现观察者模式</h2><p>观察者模式实现(CPP):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class Observer</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    virtual void Update(int) = 0;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class Subject</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    virtual void Attach(Observer *) = 0;</div><div class="line">    virtual void Detach(Observer *) = 0;</div><div class="line">    virtual void Notify() = 0;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class ConcreteObserver : public Observer</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    ConcreteObserver(Subject *pSubject) : m_pSubject(pSubject)&#123;&#125;</div><div class="line">    </div><div class="line">    void Update(int value)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; &quot;ConcreteObserver get the update. New State:&quot; &lt;&lt; value &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">private:</div><div class="line">    Subject *m_pSubject;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class ConcreteObserver2 : public Observer</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    ConcreteObserver2(Subject *pSubject) : m_pSubject(pSubject)&#123;&#125;</div><div class="line">    </div><div class="line">    void Update(int value)</div><div class="line">    &#123;</div><div class="line">        cout &lt;&lt; &quot;ConcreteObserver2 get the update. New State:&quot; &lt;&lt; value &lt;&lt; endl;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">private:</div><div class="line">    Subject *m_pSubject;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class ConcreteSubject : public Subject</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    void Attach(Observer *pObserver);</div><div class="line">    void Detach(Observer *pObserver);</div><div class="line">    void Notify();</div><div class="line">    </div><div class="line">    void SetState(int state)</div><div class="line">    &#123;</div><div class="line">        m_iState = state;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">private:</div><div class="line">    std::list&lt;Observer *&gt; m_ObserverList;</div><div class="line">    int m_iState;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>观察者模式使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    // Create Subject</div><div class="line">    ConcreteSubject *pSubject = new ConcreteSubject();</div><div class="line"> </div><div class="line">    // Create Observer</div><div class="line">    Observer *pObserver = new ConcreteObserver(pSubject);</div><div class="line">    Observer *pObserver2 = new ConcreteObserver2(pSubject);</div><div class="line"> </div><div class="line">    // Change the state</div><div class="line">    pSubject-&gt;SetState(2);</div><div class="line"> </div><div class="line">    // Register the observer</div><div class="line">    pSubject-&gt;Attach(pObserver);</div><div class="line">    pSubject-&gt;Attach(pObserver2);</div><div class="line"> </div><div class="line">    pSubject-&gt;Notify();</div><div class="line"> </div><div class="line">    // Unregister the observer</div><div class="line">    pSubject-&gt;Detach(pObserver);</div><div class="line"> </div><div class="line">    pSubject-&gt;SetState(3);</div><div class="line">    pSubject-&gt;Notify();</div><div class="line"> </div><div class="line">    delete pObserver;</div><div class="line">    delete pObserver2;</div><div class="line">    delete pSubject;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ConcreteObserver get the update. New State:2</div><div class="line">ConcreteObserver2 get the update. New State:2</div><div class="line">ConcreteObserver2 get the update. New State:3</div></pre></td></tr></table></figure>
+<p>缺点：</p>
+<ol>
+<li>非线程安全，考虑多线程调用Attach或者Detach. 通过增加一个互斥体，可以实现线程安全。</li>
+<li>解决方案不够优雅。</li>
+</ol>
+<h2 id="3-boost-signals2的解决方案"><a href="#3-boost-signals2的解决方案" class="headerlink" title="3. boost.signals2的解决方案"></a>3. boost.signals2的解决方案</h2><p>boost.signals2实现了信号/插槽(signal/slot)概念。信号/插槽实际上就是观察者模式，在知名的C++库Qt中被广泛使用。信号/插槽广泛应用于事件驱动编程中，我们所熟知的GUI事件处理，一般都采用信号/插槽来实现。C++11中的<a href="http://en.cppreference.com/w/cpp/utility/functional/function" target="_blank" rel="external">std::function</a>也可以用于事件处理。boost.signals2与std::function最大的区别在于：boost.signals2对于一个事件可以关联多个事件处理器。</p>
+<p>boost::signals2::signal 定义了信号。boost::signals2::connection 定义了插槽。</p>
+<p>基本用法与惯例：</p>
+<ul>
+<li>信号触发后，事件处理函数按照connect的调用顺序依次调用。</li>
+<li>connect调用可以进行分组，可以指定调用次序。</li>
+<li>connect之后，当不再需要监听信号了，调用disconnect断开信号监听。</li>
+</ul>
+<p>以事件驱动的GUI编程为例。假设我们为一个按钮类增加点击事件。使用boost.signals2如何实现？看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">typedef boost::signals2::signal&lt;void(int)&gt; ButtonClickFunc;</div><div class="line"></div><div class="line">void click_func(int i) &#123;</div><div class="line">    std::cout &lt;&lt; &quot;Button: &quot; &lt;&lt; i &lt;&lt; &quot; was clicked.&quot; &lt;&lt; std::endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class QButton &#123;</div><div class="line">public:</div><div class="line">    void addClickListener(const std::function&lt;void(int)&gt;&amp; func) &#123;</div><div class="line">        boost::signals2::connection c = mClickFunc.connect(func);</div><div class="line">        mClickHandlerList.push_back(c);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void onClick(uint32_t id) &#123;</div><div class="line">        mClickFunc(id);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ~QButton() &#123;</div><div class="line">        for (auto&amp; c : mClickHandlerList) &#123;</div><div class="line">            c.disconnect();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ButtonClickFunc mClickFunc;</div><div class="line">    std::vector&lt;boost::signals2::connection&gt; mClickHandlerList;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">	// 使用</div><div class="line">    std::function&lt;void(int)&gt; cf(click_func);</div><div class="line">    QButton v1;</div><div class="line">    v1.addClickListener(cf);</div><div class="line">    v1.onClick(666);</div></pre></td></tr></table></figure>
+<p>MFC中核心概念之一是Document-View Architecture，其中Document和View之间就是一对多的依赖关系，也就是观察者模式。其中Document保存了View对象所关注的信号(Signal)，多个View对信号的处理就是插槽(Slot)。</p>
+<p>举例：假设我们来设计一个文本编辑器，该文本编辑器提供两种视图，分别是常规文本视图和十六进制视图。</p>
+<p>我们需要将文本编辑器的“内容变化”这个事件作为信号，不同的视图依赖这个信号的变化，当这个信号触发时，所有的视图都得到通知。看代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">class Document</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    typedef boost::signals2::signal&lt;void ()&gt;  signal_t;</div><div class="line">    </div><div class="line">public:</div><div class="line">    Document()</div><div class="line">    &#123;&#125;</div><div class="line">    </div><div class="line">    /* Connect a slot to the signal which will be emitted whenever</div><div class="line">     text is appended to the document. */</div><div class="line">    boost::signals2::connection connect(const signal_t::slot_type &amp;subscriber)</div><div class="line">    &#123;</div><div class="line">        return m_sig.connect(subscriber);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void append(const char* s)</div><div class="line">    &#123;</div><div class="line">        m_text += s;</div><div class="line">        m_sig();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    const std::string&amp; getText() const</div><div class="line">    &#123;</div><div class="line">        return m_text;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">private:</div><div class="line">    signal_t    m_sig;</div><div class="line">    std::string m_text;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class TextView</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    TextView(Document&amp; doc): m_document(doc)</div><div class="line">    &#123;</div><div class="line">        m_connection = m_document.connect(boost::bind(&amp;TextView::refresh, this));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ~TextView()</div><div class="line">    &#123;</div><div class="line">        m_connection.disconnect();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void refresh() const</div><div class="line">    &#123;</div><div class="line">        std::cout &lt;&lt; &quot;TextView: &quot; &lt;&lt; m_document.getText() &lt;&lt; std::endl;</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    Document&amp;               m_document;</div><div class="line">    boost::signals2::connection  m_connection;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class HexView</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    HexView(Document&amp; doc): m_document(doc)</div><div class="line">    &#123;</div><div class="line">        m_connection = m_document.connect(boost::bind(&amp;HexView::refresh, this));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ~HexView()</div><div class="line">    &#123;</div><div class="line">        m_connection.disconnect();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    void refresh() const</div><div class="line">    &#123;</div><div class="line">        const std::string&amp;  s = m_document.getText();</div><div class="line">        </div><div class="line">        std::cout &lt;&lt; &quot;HexView:&quot;;</div><div class="line">        </div><div class="line">        for (std::string::const_iterator it = s.begin(); it != s.end(); ++it)</div><div class="line">            std::cout &lt;&lt; &apos; &apos; &lt;&lt; std::hex &lt;&lt; static_cast&lt;int&gt;(*it);</div><div class="line">        </div><div class="line">        std::cout &lt;&lt; std::endl;</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    Document&amp;               m_document;</div><div class="line">    boost::signals2::connection  m_connection;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>上述代码实现了使用boost.signals2来实现Document-View的联动。使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Document    doc;</div><div class="line">TextView    v1(doc);</div><div class="line">HexView     v2(doc);</div><div class="line"></div><div class="line">doc.append(&quot;hello &quot;);</div><div class="line">doc.append(&quot;world&quot;);</div></pre></td></tr></table></figure>
+<p>运行程序输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">TextView: hello </div><div class="line">HexView: 68 65 6c 6c 6f 20</div><div class="line">TextView: hello world</div><div class="line">HexView: 68 65 6c 6c 6f 20 77 6f 72 6c 64</div></pre></td></tr></table></figure>
+<h2 id="4-boost-signals2的好处"><a href="#4-boost-signals2的好处" class="headerlink" title="4. boost.signals2的好处"></a>4. boost.signals2的好处</h2><ol>
+<li>简化对象间的关系，降低对象间的耦合。为我们提供了一个简单、易用的回调框架。</li>
+<li>线程安全。signals2::signal与signals2::connection都是线程安全的。</li>
+</ol>
+<h2 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5. 参考资料"></a>5. 参考资料</h2><ol>
+<li><a href="http://www.cnblogs.com/carsonzhu/p/5770253.html" target="_blank" rel="external">观察者模式概念及实现</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Signals_and_slots" target="_blank" rel="external">信号/插槽概念及实现</a></li>
+<li><a href="https://theboostcpplibraries.com/boost.signals2" target="_blank" rel="external">boost.signals2教程</a></li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/01/boost-signals2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/Boost.signals2/" class="archive-article-date">
-  	<time datetime="2017-05-01T10:36:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/Boost.signals2/">观察者模式及boost的解决方案signals2</a>
-    </h1>
+  
+    <a href="/2017/05/01/Boost.signals2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">观察者模式及boost的解决方案signals2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">boost</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">观察者模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/01/new-article/" class="archive-article-date">
-  	<time datetime="2017-05-01T10:36:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/01/new-article/">new article</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -297,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
