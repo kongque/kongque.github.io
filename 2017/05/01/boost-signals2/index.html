@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>boost.signals2 | kongque develop</title>
+  <title>观察者模式与boost的解决方案signals2 | kongque develop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 观察者模式什么是观察者模式呢？
 定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
@@ -14,7 +14,7 @@
 2. 从零开始实现观察者模式观察者模式实现(CPP):
 1234567891">
 <meta property="og:type" content="article">
-<meta property="og:title" content="boost.signals2">
+<meta property="og:title" content="观察者模式与boost的解决方案signals2">
 <meta property="og:url" content="http://yoursite.com/2017/05/01/boost-signals2/index.html">
 <meta property="og:site_name" content="kongque develop">
 <meta property="og:description" content="1. 观察者模式什么是观察者模式呢？
@@ -22,9 +22,9 @@
 特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。
 2. 从零开始实现观察者模式观察者模式实现(CPP):
 1234567891">
-<meta property="og:updated_time" content="2017-05-01T10:41:49.000Z">
+<meta property="og:updated_time" content="2017-05-01T10:45:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="boost.signals2">
+<meta name="twitter:title" content="观察者模式与boost的解决方案signals2">
 <meta name="twitter:description" content="1. 观察者模式什么是观察者模式呢？
 定义：观察者模式建立对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
 特点：当一个对象发生了变化，关注它的对象就会得到通知。这种交互也称为发布-订阅(publish-subscribe)。通知的发布者发出通知时并不需要知道谁是它的观察者。
@@ -182,7 +182,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      boost.signals2
+      观察者模式与boost的解决方案signals2
     </h1>
   
 
@@ -265,6 +265,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">boost</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -423,6 +442,18 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">boost</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
